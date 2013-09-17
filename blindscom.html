@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blinds.com Interview Test - Charlie Hedgepeth</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<script src="http://code.angularjs.org/angular-1.0.0.min.js"></script>
+<script src="search.js"></script>
+</head>
+ 
+<body>
+
+ <div ng-app="app">
+    <div ng-controller="itemsCtrl">
+
+  <div>
+    <input type="search" ng-model="searchString" placeholder="Search Items" />
+  </div>
+
+
+         <h2>Items:</h2>
+
+        <table>
+            <tr>
+                <th>Photo</th>
+                <th ng-click="changeSorting('text')">Description</th>
+                <th ng-click="changeSorting('price')">Price</th>
+            </tr>
+            <tr ng-repeat="i in items.data | filter:searchString | orderBy:sort.column:sort.descending">
+                <td><img ng-src="{{i.image}}" /></td>
+                <td>{{i.text}}</td>
+                <td>{{i.price}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
